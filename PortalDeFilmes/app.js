@@ -8,7 +8,7 @@ function MostraFilmesEmCartaz () {
     $.ajax({
         url: TMDB_ENDPOINT_BASE + 'movie/now_playing',
         data: {
-            api_key: '0ed669004962ec3a7cb8926074ca18ee'
+            api_key: '0ed669004962ec3a7cb8926074ca18ee',
         }
     })
     //Receber o JSON
@@ -20,21 +20,32 @@ function MostraFilmesEmCartaz () {
         for(i = 0; i < data.results.length; i++) {
             //Concatenar o código do Card com os dados do JSON
             titulo = data.results[i].title;
-            sinopse = data.results[i].overview;
+            sinopse = "";
+            for(j = 0; j < 520 && j < data.results[i].overview.length; j++) {
+                sinopse += data.results[i].overview.charAt(j);
+            }
+            if(sinopse.length >= 520) {
+                sinopse += "..."
+            }
             imagem = 'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path;
 
             link = 'https://www.themoviedb.org/movie/' + data.results[i].id;
 
-            codigo_html += `<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-            <div class="card">
-                <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
-                <div class="card-body">
-                    <h5 class="card-title">${titulo}</h5>
-                    <p class="card-text">${sinopse}</p>
-                    <a href="${link}" class="btn btn-primary">Abrir filme</a>
-                </div>
-            </div>
-        </div>`;
+            codigo_html += `<div class="card-container col-12 col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center mb-4">
+                                <div class="card card-principal card-front shadow">
+                                    <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <h5 class="card-title">${titulo}</h5>
+                                    </div>
+                                </div>
+                                <div class="card card-principal card-back shadow">
+                                    <h5 class="card-title">${titulo}</h5>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <p class="card-text">${sinopse}</p>
+                                        <a href="${link}" class="btn botao">Abrir filme</a>
+                                    </div>
+                                </div>
+                            </div>`;
         }
 
         //Repassar os Cards para a página
@@ -61,21 +72,32 @@ function MostraFilmesPopulares () {
         for(i = 0; i < data.results.length; i++) {
             //Concatenar o código do Card com os dados do JSON
             titulo = data.results[i].title;
-            sinopse = data.results[i].overview;
+            sinopse = "";
+            for(j = 0; j < 520 && j < data.results[i].overview.length; j++) {
+                sinopse += data.results[i].overview.charAt(j);
+            }
+            if(sinopse.length >= 520) {
+                sinopse += "..."
+            }
             imagem = 'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path;
 
             link = 'https://www.themoviedb.org/movie/' + data.results[i].id;
 
-            codigo_html += `<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-            <div class="card">
-                <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
-                <div class="card-body">
-                    <h5 class="card-title">${titulo}</h5>
-                    <p class="card-text">${sinopse}</p>
-                    <a href="${link}" class="btn btn-primary">Abrir filme</a>
-                </div>
-            </div>
-        </div>`;
+            codigo_html += `<div class="card-container col-12 col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center mb-4">
+                                <div class="card card-principal card-front shadow">
+                                    <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <h5 class="card-title">${titulo}</h5>
+                                    </div>
+                                </div>
+                                <div class="card card-principal card-back shadow">
+                                    <h5 class="card-title">${titulo}</h5>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <p class="card-text">${sinopse}</p>
+                                        <a href="${link}" class="btn botao">Abrir filme</a>
+                                    </div>
+                                </div>
+                            </div>`;
         }
 
         //Repassar os Cards para a página
@@ -102,21 +124,32 @@ function MostraMelhoresSeries () {
         for(i = 0; i < data.results.length; i++) {
             //Concatenar o código do Card com os dados do JSON
             titulo = data.results[i].name;
-            sinopse = data.results[i].overview;
+            sinopse = "";
+            for(j = 0; j < 475 && j < data.results[i].overview.length; j++) {
+                sinopse += data.results[i].overview.charAt(j);
+            }
+            if(sinopse.length >= 475) {
+                sinopse += "..."
+            }
             imagem = 'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path;
 
             link = 'https://www.themoviedb.org/tv/' + data.results[i].id;
 
-            codigo_html += `<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-            <div class="card">
-                <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
-                <div class="card-body">
-                    <h5 class="card-title">${titulo}</h5>
-                    <p class="card-text">${sinopse}</p>
-                    <a href="${link}" class="btn btn-primary">Abrir filme</a>
-                </div>
-            </div>
-        </div>`;
+            codigo_html += `<div class="card-container col-12 col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center mb-4">
+                                <div class="card card-principal card-front shadow">
+                                    <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <h5 class="card-title">${titulo}</h5>
+                                    </div>
+                                </div>
+                                <div class="card card-principal card-back shadow">
+                                    <h5 class="card-title">${titulo}</h5>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <p class="card-text">${sinopse}</p>
+                                        <a href="${link}" class="btn botao">Abrir filme</a>
+                                    </div>
+                                </div>
+                            </div>`;
         }
 
         //Repassar os Cards para a página
@@ -146,22 +179,33 @@ function pesquisarFilme() {
 
         for(i = 0; i < data.results.length; i++) {
             //Concatenar o código do Card com os dados do JSON
-            titulo = data.results[i].original_title;
-            sinopse = data.results[i].overview;
+            titulo = data.results[i].title;
+            sinopse = "";
+            for(j = 0; j < 520 && j < data.results[i].overview.length; j++) {
+                sinopse += data.results[i].overview.charAt(j);
+            }
+            if(sinopse.length >= 520) {
+                sinopse += "..."
+            }
             imagem = 'https://image.tmdb.org/t/p/w500' + data.results[i].poster_path;
 
             link = 'https://www.themoviedb.org/movie/' + data.results[i].id;
 
-            codigo_html += `<div class="col-12 col-sm-12 col-md-6 col-lg-3" id="pesquisados">
-            <div class="card">
-                <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
-                <div class="card-body">
-                    <h5 class="card-title">${titulo}</h5>
-                    <p class="card-text">${sinopse}</p>
-                    <a href="${link}" class="btn btn-primary">Abrir filme</a>
-                </div>
-            </div>
-        </div>`;
+            codigo_html += `<div class="card-container col-12 col-sm-6 col-lg-4 col-xl-3 d-flex align-items-stretch justify-content-center mb-4">
+                                <div class="card card-principal card-front shadow">
+                                    <img src="${imagem}" class="card-img-top" alt="filme: ${titulo}">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <h5 class="card-title">${titulo}</h5>
+                                    </div>
+                                </div>
+                                <div class="card card-principal card-back shadow">
+                                    <h5 class="card-title">${titulo}</h5>
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <p class="card-text">${sinopse}</p>
+                                        <a href="${link}" class="btn botao">Abrir filme</a>
+                                    </div>
+                                </div>
+                            </div>`;
         }
 
         if(numInicial == codigo_html.length) {

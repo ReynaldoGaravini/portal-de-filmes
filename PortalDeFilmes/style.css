@@ -2,10 +2,6 @@ html{
     height: 100%;
 }
 
-img {
-    max-width: 100%;
-}
-
 h2 {
     text-align: center;
     color: white;
@@ -19,7 +15,7 @@ h2 {
 }
 
 #zero-resultados {
-    color: #007bff;
+    color: #00a2ff;
     text-align: center;
     font-size: 1.5rem;
     margin: 30px 0px 30px;
@@ -31,44 +27,102 @@ h2 {
 }
 
 .logo{
-    width: 100px;
+    max-width: 60px;
 }
 
 .header{
     background: rgb(255, 255, 255);
-    margin-bottom: 20px;
     text-align: center;
 }
 
 .header_area{
     padding: 20px;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
-.menu_area{
-    margin-top: 30px;
+nav a{
+    color:#ff0000;
 }
 
-.menu_area nav a{
-    margin-bottom: 10px;
-    margin-left: 5px;
-}
-
-.menu_area nav a:hover{
-    background-color: #4c7892;
-    color:white;
+nav a:hover{
+    background-color: #ffffff00;
+    color: #ff0000;
 }
 
 .active{
     background-color: #ff0000 !important;
 }
 
+.search:focus{
+    border-color: #ffffff00;
+    box-shadow: none;
+}
+
+.search-box:focus{
+    border-color: #ff0000;
+    box-shadow: none;
+}
+
+.botao{
+    background-color: #ff0000;
+    color: white;
+    transition: background-color 0.5s;
+}
+
+.botao:hover{
+    background-color: #00a2ff;
+    color: white;
+}
+
 .main {
     margin: 0 auto;
 }
 
+.card-principal{
+    text-align: center;
+    border-color: rgba(255, 255, 255, 0);
+}
+
+.card-container{
+    position: relative;
+    perspective: 200rem;
+    height: 539px;
+
+}
+
+.card-container:hover .card-front{
+    transform: rotateY(180deg);
+}
+
+.card-container:hover .card-back{
+    transform: rotateY(0deg);
+}
+
+.card-back{
+    transform: rotateY(180deg);
+}
+
+.card{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all 0.9s;
+    backface-visibility: hidden;
+}
+
+.card-back .card-body{
+    position: relative;
+}
+
+.card-body p{
+    text-align: justify;
+}
+
 .main .card{
     max-width: 100%;
-    margin-bottom: 15px;
 }
 
 .main_area{
